@@ -28,7 +28,7 @@ Route::view('dashboard', 'dashboard')
 Route::prefix('dashboard')->middleware(['auth', 'role:admin'])->group(function () {
     Route::get('courses', CoursesIndex::class)->name('courses.index');
     Route::get('courses/create', CourseForm::class)->name('courses.create');
-    Route::get('courses/{course}/edit', CourseForm::class)->name('courses.edit');
+    Route::get('courses/{courseId}/edit', CourseForm::class)->name('courses.edit');
 
     Route::get('categories', CategoryIndex::class)->name('categories.index');
     Route::get('categories/create', CategoryForm::class)->name('categories.create');

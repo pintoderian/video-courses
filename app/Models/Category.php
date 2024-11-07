@@ -12,9 +12,6 @@ class Category extends Model
 
     protected $fillable = ['name', 'slug'];
 
-    /**
-     * Mutator para generar el slug automáticamente si no está definido
-     */
     public function setSlugAttribute($value)
     {
         $this->attributes['slug'] = $value ?: Str::slug($this->title);

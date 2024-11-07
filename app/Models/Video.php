@@ -12,14 +12,6 @@ class Video extends Model
 
     protected $fillable = ['name', 'slug', 'image', 'url', 'description', 'course_id', 'is_block'];
 
-    public function getRouteKeyName()
-    {
-        return 'slug';
-    }
-
-    /**
-     * Mutator para generar el slug automáticamente si no está definido
-     */
     public function setSlugAttribute($value)
     {
         $this->attributes['slug'] = $value ?: Str::slug($this->title);

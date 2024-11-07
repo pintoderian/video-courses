@@ -12,14 +12,6 @@ class Course extends Model
 
     protected $fillable = ['name', 'slug', 'image', 'age_group', 'description', 'category_id'];
 
-    public function getRouteKeyName()
-    {
-        return 'slug';
-    }
-
-    /**
-     * Mutator para generar el slug automáticamente si no está definido
-     */
     public function setSlugAttribute($value)
     {
         $this->attributes['slug'] = $value ?: Str::slug($this->title);

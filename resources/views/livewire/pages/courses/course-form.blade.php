@@ -19,12 +19,12 @@
                     <form wire:submit.prevent="save">
                         <div class="space-y-4">
                             <div class="form-group">
-                                <label for="title"
-                                    class="block text-sm font-medium text-gray-700 dark:text-gray-300">Title</label>
-                                <input type="text" id="title"
+                                <label for="name"
+                                    class="block text-sm font-medium text-gray-700 dark:text-gray-300">Name</label>
+                                <input type="text" id="name"
                                     class="form-input mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white"
-                                    wire:model="title">
-                                @error('title') <span class="text-sm text-red-500">{{ $message }}</span> @enderror
+                                    wire:model="name">
+                                @error('name') <span class="text-sm text-red-500">{{ $message }}</span> @enderror
                             </div>
 
                             <div class="form-group">

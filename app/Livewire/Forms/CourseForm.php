@@ -14,10 +14,10 @@ class CourseForm extends Component
     use WithFileUploads;
 
     public $course;
-    public $title, $description, $age_group, $category_id, $slug, $image, $is_paid;
+    public $name, $description, $age_group, $category_id, $slug, $image, $is_paid;
 
     protected $rules = [
-        'title' => 'required|string|max:255',
+        'name' => 'required|string|max:255',
         'description' => 'required|string',
         'age_group' => 'required|in:5-8,9-13,14-16,16+',
         'category_id' => 'required|exists:categories,id',
@@ -28,7 +28,7 @@ class CourseForm extends Component
     {
         if ($courseId) {
             $this->course = Course::findOrFail($courseId);
-            $this->title = $this->course->title;
+            $this->name = $this->course->name;
             $this->description = $this->course->description;
             $this->age_group = $this->course->age_group;
             $this->category_id = $this->course->category_id;
@@ -46,11 +46,11 @@ class CourseForm extends Component
         $validatedData = $this->validate();
 
         $data = [
-            'title' => $validatedData['title'],
+            'name' => $validatedData['name'],
             'description' => $validatedData['description'],
             'age_group' => $validatedData['age_group'],
             'category_id' => $validatedData['category_id'],
-            'slug' => $validatedData['slug'] ?: Str::slug($validatedData['title']),
+            'slug' => isset($validatedData['slug']) ? $validatedData['slug'] : Str::slug($validatedData['name']),
         ];
 
         if ($this->image) {
@@ -63,7 +63,7 @@ class CourseForm extends Component
             Course::create($data);
         }
 
-        session()->flash('message', $this->course ? 'Curso actualizado con éxito' : 'Curso creado con éxito');
+        session()->flash('message', $this->course ? 'Course updated successfully' : 'Course created successfully');
 
         return redirect()->route('courses.index');
     }

@@ -14,33 +14,7 @@ class RolesAndPermissionsSeeder extends Seeder
      */
     public function run(): void
     {
-        $permissions = [
-            'view courses',
-            'create courses',
-            'edit courses',
-            'delete courses',
-            'view videos',
-            'create videos',
-            'edit videos',
-            'delete videos',
-            'approve comments',
-        ];
-
-        foreach ($permissions as $permission) {
-            Permission::create(['name' => $permission]);
-        }
-
-        // Roles
-        $adminRole = Role::create(['name' => 'admin']);
-        $userRole = Role::create(['name' => 'user']);
-
-        // Asignar permisos al rol de admin
-        $adminRole->givePermissionTo(Permission::all());
-
-        // Asignar permisos al rol de usuario
-        $userRole->givePermissionTo([
-            'view courses',
-            'view videos',
-        ]);
+        Role::create(['name' => 'admin']);
+        Role::create(['name' => 'user']);
     }
 }

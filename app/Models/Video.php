@@ -4,12 +4,26 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Str;
 
 class Video extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'slug', 'url', 'description', 'course_id'];
+    protected $fillable = ['name', 'slug', 'image', 'url', 'description', 'course_id', 'is_block'];
+
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
+
+    /**
+     * Mutator para generar el slug automáticamente si no está definido
+     */
+    public function setSlugAttribute($value)
+    {
+        $this->attributes['slug'] = $value ?: Str::slug($this->title);
+    }
 
     public function course()
     {

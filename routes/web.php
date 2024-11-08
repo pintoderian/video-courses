@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\HomepageController;
 use App\Livewire\Forms\CourseForm;
 use App\Livewire\Tables\CoursesIndex;
 
@@ -22,7 +23,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::view('/', 'welcome');
+Route::get('/', [HomepageController::class, 'index'])->name('homepage.index');
+Route::get('/course/{slug}', [HomepageController::class, 'course'])->name('homepage.course');
 
 Route::view('dashboard', 'dashboard')
     ->middleware(['auth', 'verified'])

@@ -11,9 +11,33 @@
       </div>
 
       <div class="container mx-auto px-4 lg:px-0 py-8 border-b mb-8">
+        <div id="flash-container">
+          @if(Session::has('message'))
+          <div class="mb-4">
+            <x-alert-danger>
+              {{ Session::get('message') }}
+            </x-alert-danger>
+          </div>
+          @endif
+          @if(Session::has('messageSuccess'))
+          <div class="mb-4">
+            <x-alert-success>
+              {{ Session::get('messageSuccess') }}
+            </x-alert-success>
+          </div>
+          @endif
+        </div>
+
         <h2 class="text-2xl font-bold mb-4">{{ $video->name }}</h2>
 
         <p>{{ $video->description }}</p>
+
+        <div class="my-2">
+          @livewire('video-progress', ['video' => $video, 'routeName' => 'homepage.video'])
+        </div>
+      </div>
+      <div class="my-6">
+        @livewire('video-comments', ['video' => $video])
       </div>
     </div>
   </section>

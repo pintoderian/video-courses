@@ -40,4 +40,9 @@ class Video extends Model
     {
         return $this->hasMany(Like::class);
     }
+
+    public function userProgress()
+    {
+        return $this->hasMany(UserVideoProgress::class);
+    }
 }

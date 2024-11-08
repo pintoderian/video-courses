@@ -13,6 +13,10 @@
             @else
             <img alt="{{ $course->name }}" class="w-full h-60 object-cover" src="/placeholder.svg" />
             @endif
+
+            <div class="py-4 text-center">
+              @livewire('course-registration', ['course' => $course])
+            </div>
           </div>
         </div>
       </div>

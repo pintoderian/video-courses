@@ -18,6 +18,10 @@
         </x-slot>
 
         <x-slot name="content">
+            <x-dropdown-link :href="route('dashboard')" wire:navigate>
+                {{ __('Dashboard') }}
+            </x-dropdown-link>
+
             <x-dropdown-link :href="route('profile')" wire:navigate>
                 {{ __('Profile') }}
             </x-dropdown-link>

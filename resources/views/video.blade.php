@@ -32,8 +32,9 @@
 
         <p>{{ $video->description }}</p>
 
-        <div class="my-2">
+        <div class="my-2 flex flex-row gap-4">
           @livewire('video-progress', ['video' => $video, 'routeName' => 'homepage.video'])
+          @livewire('like-video', ['video' => $video])
         </div>
       </div>
       <div class="my-6">

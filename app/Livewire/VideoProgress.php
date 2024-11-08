@@ -2,6 +2,7 @@
 
 namespace App\Livewire;
 
+use App\Models\UserCourse;
 use App\Models\UserVideoProgress;
 use App\Models\Video;
 use Illuminate\Support\Facades\Auth;
@@ -31,6 +32,14 @@ class VideoProgress extends Component
 
         if (!Auth::check()) {
             session()->flash('message', 'Auth required!');
+            $this->redirect(route($this->routeName, ['slug' => $routeSlugRedirect]));
+            return;
+        }
+        $check = UserCourse::where('user_id', Auth::id())
+            ->where('course_id', $this->video->course->id)
+            ->first();
+        if (!$check) {
+            session()->flash('message', 'Please register for the course!');
             $this->redirect(route($this->routeName, ['slug' => $routeSlugRedirect]));
             return;
         }

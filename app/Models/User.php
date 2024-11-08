@@ -48,4 +48,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(UserVideoProgress::class);
     }
+
+    public function courses()
+    {
+        return $this->belongsToMany(Course::class, 'user_courses');
+    }
 }

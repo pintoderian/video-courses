@@ -63,4 +63,18 @@ class HomepageController extends Controller
         $courses = Course::where('age_group', $slug)->get();
         return view('group', compact('slug', 'courses', 'categories'));
     }
+
+    public function search(Request $request)
+    {
+        $search = $request->input('q');
+
+        $query = Course::with('category');
+        if ($search) {
+            $query->where('name', 'like', '%' . $search . '%');
+        }
+        $categories = Category::all();
+        $courses = $query->paginate(10)->appends(request()->query());
+
+        return view('search', compact('search', 'courses', 'categories'));
+    }
 }

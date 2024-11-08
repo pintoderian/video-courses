@@ -15,9 +15,9 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('slug')->unique();
-            $table->string('image');
-            $table->enum('age_group', ['5-8', '9-13', '14-16', '16+']);
-            $table->text('description');
+            $table->string('image')->nullable();
+            $table->enum('age_group', ['5-8', '9-13', '14-16', '16+'])->nullable();
+            $table->text('description')->nullable();
             $table->foreignId('category_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });

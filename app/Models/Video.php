@@ -10,11 +10,11 @@ class Video extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'slug', 'image', 'url', 'description', 'course_id', 'is_block'];
+    protected $fillable = ['name', 'slug', 'url', 'description', 'course_id', 'is_block'];
 
     public function setSlugAttribute($value)
     {
-        $this->attributes['slug'] = $value ?: Str::slug($this->title);
+        $this->attributes['slug'] = isset($value) ? $value : Str::slug($this->name);
     }
 
     public function course()

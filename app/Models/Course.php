@@ -14,7 +14,7 @@ class Course extends Model
 
     public function setSlugAttribute($value)
     {
-        $this->attributes['slug'] = $value ?: Str::slug($this->title);
+        $this->attributes['slug'] = isset($value) ? $value : Str::slug($this->name);
     }
 
     public function category()

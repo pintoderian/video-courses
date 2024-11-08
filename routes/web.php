@@ -6,6 +6,9 @@ use App\Livewire\Tables\CoursesIndex;
 use App\Livewire\Forms\CategoryForm;
 use App\Livewire\Tables\CategoryIndex;
 
+use App\Livewire\Tables\VideoIndex;
+use App\Livewire\Forms\VideoForm;
+
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,7 +25,7 @@ use Illuminate\Support\Facades\Route;
 Route::view('/', 'welcome');
 
 Route::view('dashboard', 'dashboard')
-    ->middleware(['auth', 'verified', 'role:admin'])
+    ->middleware(['auth', 'verified'])
     ->name('dashboard');
 
 Route::prefix('dashboard')->middleware(['auth', 'role:admin'])->group(function () {
@@ -34,9 +37,9 @@ Route::prefix('dashboard')->middleware(['auth', 'role:admin'])->group(function (
     Route::get('categories/create', CategoryForm::class)->name('categories.create');
     Route::get('categories/{categoryId}/edit', CategoryForm::class)->name('categories.edit');
 
-    Route::get('videos', CoursesIndex::class)->name('videos.index');
-    Route::get('videos/create', CourseForm::class)->name('videos.create');
-    Route::get('videos/{course}/edit', CourseForm::class)->name('videos.edit');
+    Route::get('videos', VideoIndex::class)->name('videos.index');
+    Route::get('videos/create', VideoForm::class)->name('videos.create');
+    Route::get('videos/{videoId}/edit', VideoForm::class)->name('videos.edit');
 });
 
 Route::view('profile', 'profile')

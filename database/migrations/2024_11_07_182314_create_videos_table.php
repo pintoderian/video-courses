@@ -15,10 +15,9 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('slug')->unique();
-            $table->string('image');
             $table->foreignId('course_id')->constrained()->onDelete('cascade');
-            $table->string('url')->nullable();  // Video URL (could be YouTube)
-            $table->text('description');
+            $table->string('url')->nullable();
+            $table->text('description')->nullable();
             $table->boolean('is_block')->default(false);
             $table->timestamps();
         });

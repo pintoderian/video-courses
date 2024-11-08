@@ -1,6 +1,9 @@
 <?php
 
 use App\Http\Controllers\HomepageController;
+
+use App\Livewire\Tables\CommentApproval;
+
 use App\Livewire\Forms\CourseForm;
 use App\Livewire\Tables\CoursesIndex;
 
@@ -47,6 +50,8 @@ Route::prefix('dashboard')->middleware(['auth', 'role:admin'])->group(function (
     Route::get('videos', VideoIndex::class)->name('videos.index');
     Route::get('videos/create', VideoForm::class)->name('videos.create');
     Route::get('videos/{videoId}/edit', VideoForm::class)->name('videos.edit');
+
+    Route::get('comments', CommentApproval::class)->name('comments.index');
 });
 
 Route::view('profile', 'profile')

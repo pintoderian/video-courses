@@ -25,6 +25,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomepageController::class, 'index'])->name('homepage.index');
 Route::get('/course/{slug}', [HomepageController::class, 'course'])->name('homepage.course');
+Route::get('/video/{slug}', [HomepageController::class, 'video'])->name('homepage.video');
 
 Route::view('dashboard', 'dashboard')
     ->middleware(['auth', 'verified'])

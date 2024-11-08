@@ -54,4 +54,6 @@
             </div>
         </div>
     </section>
+
+    <x-ages></x-ages>
 </x-homepage-layout>

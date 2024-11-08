@@ -26,6 +26,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [HomepageController::class, 'index'])->name('homepage.index');
 Route::get('/course/{slug}', [HomepageController::class, 'course'])->name('homepage.course');
 Route::get('/video/{slug}', [HomepageController::class, 'video'])->name('homepage.video');
+Route::get('/category/{slug}', [HomepageController::class, 'category'])->name('homepage.category');
+Route::get('/group/{slug}', [HomepageController::class, 'groupCourse'])->name('homepage.group');
 
 Route::view('dashboard', 'dashboard')
     ->middleware(['auth', 'verified'])

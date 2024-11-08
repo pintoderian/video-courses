@@ -43,4 +43,24 @@ class HomepageController extends Controller
 
         return view('video', compact('video'));
     }
+
+    public function category($slug)
+    {
+        $category = Category::where('slug', $slug)->firstOrFail();
+        $categories = Category::all();
+        $courses = Course::where('category_id', $category->id)->get();
+
+        return view('category', compact('category', 'courses', 'categories'));
+    }
+
+    public function groupCourse($slug)
+    {
+        $ageGroups = ['5-8', '9-13', '14-16', '16+'];
+        if (!in_array($slug, $ageGroups)) {
+            abort(404);
+        }
+        $categories = Category::all();
+        $courses = Course::where('age_group', $slug)->get();
+        return view('group', compact('slug', 'courses', 'categories'));
+    }
 }

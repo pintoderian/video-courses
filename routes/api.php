@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\CourseController;
 use App\Http\Controllers\Api\CommentController;
 use App\Http\Controllers\Api\ProgressController;
+use App\Http\Controllers\Api\VideoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,11 +30,11 @@ Route::prefix('v1')->group(function () {
     // Ver videos del curso
     Route::get('courses/{courseId}/videos', [CourseController::class, 'videos']);
     // Registrar usuario en curso
-    Route::post('courses/{courseId}/register', [CourseController::class, 'registerUser']);
+    Route::post('courses/register', [CourseController::class, 'registerUser']);
     // Subir comentarios
     Route::post('comments/{videoId}', [CommentController::class, 'store']);
     // Dar likes
-    Route::post('comments/{videoId}/like', [CommentController::class, 'like']);
+    Route::post('videos/{videoId}/like', [VideoController::class, 'like']);
     // Manejar progreso
     Route::post('progress/{courseId}/update', [ProgressController::class, 'update']);
 });

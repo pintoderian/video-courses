@@ -2,6 +2,8 @@
 
 namespace Tests\Feature;
 
+use App\Models\Course;
+use App\Models\User;
 use Database\Seeders\DatabaseSeeder;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -84,6 +86,23 @@ class CourseControllerTest extends TestCase
             'prev_page_url',
             'to',
             'total'
+        ]);
+    }
+
+    public function test_register_user_in_course()
+    {
+        $user = User::find(1);
+        $course = Course::find(1);
+
+        $this->actingAs($user)
+            ->postJson('/api/v1/courses/register', [
+                'course_id' => $course->id,
+                'user_id' => $user->id
+            ]);
+
+        $this->assertDatabaseHas('user_courses', [
+            'user_id' => $user->id,
+            'course_id' => $course->id
         ]);
     }
 }

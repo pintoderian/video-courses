@@ -36,7 +36,7 @@ class HomepageController extends Controller
 
         $userRegistered = UserCourse::where('user_id', Auth::id())->where('course_id', $video->course->id)->first();
 
-        if (Auth::check() && !$userRegistered && $video->is_block) {
+        if (Auth::check() && !$userRegistered && $video->is_block && !Auth::user()->hasRole('admin')) {
             session()->flash('message', 'This ' . $video->name . ' is private, You are required to register for the course!.');
             return redirect('/course/' . $video->course->slug);
         }

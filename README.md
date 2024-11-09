@@ -274,20 +274,20 @@ php artisan test
 
 ### SCREENS
 
-<img src="/screenshots/screenshot-1.png" width="300">
+<img src="/screenshots/screen-1.png" width="300">
 
-<img src="/screenshots/screenshot-2.png" width="300">
+<img src="/screenshots/screen-2.png" width="300">
 
-<img src="/screenshots/screenshot-3.png" width="300">
+<img src="/screenshots/screen-3.png" width="300">
 
-<img src="/screenshots/screenshot-4.png" width="300">
+<img src="/screenshots/screen-4.png" width="300">
 
-<img src="/screenshots/screenshot-5.png" width="300">
+<img src="/screenshots/screen-5.png" width="300">
 
-<img src="/screenshots/screenshot-6-admin.png" width="300">
+<img src="/screenshots/screen-6-admin.png" width="300">
 
-<img src="/screenshots/screenshot-7.png" width="300">
+<img src="/screenshots/screen-7.png" width="300">
 
-<img src="/screenshots/screenshot-8.png" width="300">
+<img src="/screenshots/screen-8.png" width="300">
 
-<img src="/screenshots/screenshot-9.png" width="300">
+<img src="/screenshots/screen-9.png" width="300">

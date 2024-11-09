@@ -26,22 +26,14 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::prefix('v1')->group(function () {
     // Listar cursos
     Route::get('courses', [CourseController::class, 'index']);
-
-    // Buscar cursos
-    Route::get('courses/search', [CourseController::class, 'search']);
-
-    // Registrar usuario en curso
-    Route::post('courses/{course}/register', [CourseController::class, 'registerUser']);
-
     // Ver videos del curso
-    Route::get('courses/{course}/videos', [CourseController::class, 'videos']);
-
+    Route::get('courses/{courseId}/videos', [CourseController::class, 'videos']);
+    // Registrar usuario en curso
+    Route::post('courses/{courseId}/register', [CourseController::class, 'registerUser']);
     // Subir comentarios
-    Route::post('comments', [CommentController::class, 'store']);
-
+    Route::post('comments/{videoId}', [CommentController::class, 'store']);
     // Dar likes
-    Route::post('comments/{comment}/like', [CommentController::class, 'like']);
-
+    Route::post('comments/{videoId}/like', [CommentController::class, 'like']);
     // Manejar progreso
-    Route::post('progress/{course}/update', [ProgressController::class, 'update']);
+    Route::post('progress/{courseId}/update', [ProgressController::class, 'update']);
 });

@@ -75,7 +75,13 @@ Este proyecto tiene como objetivo administrar un pequeño sitio web de enseñanz
     npm run build
     ```
 
-8. **Iniciar el servidor de desarrollo**
+8. **Generar link para las imágenes**
+
+    ```bash
+    php artisan storage:link
+    ```
+
+9. **Iniciar el servidor de desarrollo**
 
     Una vez configurado todo, inicia el servidor de desarrollo de Laravel:
 
